@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-api_key = os.getenv("GOOGLE_API_KEY") # If you are not using Colab you can set the API key directly
+api_key = os.getenv("GOOGLE_API_KEY") 
 
 # Create a client
 client = genai.Client(api_key=api_key)
@@ -26,7 +26,7 @@ print(f'File: {_pdf.display_name} equals to {file_size.total_tokens} tokens')
 
 file = client.files.upload(file=file_path, config={'display_name': file_path.split('/')[-1].split('.')[0]})
 
-# Generate a response using the Person model
+# Generate a response 
 start_time = time.time()
 response = client.models.generate_content(model=model_id, contents=[prompt, file], config={'response_mime_type': 'text/plain'})
 end_time = time.time()
